@@ -11,7 +11,9 @@ source:
   sha256: {{ sha256 }}
 
 build:
-  noarch: generic
+  # the module explicitly installs itself to arch (subversion-specific) path
+  #and thus cannot be noarch despite being pure-Perl
+  #noarch: generic
   number: 1
   script:
     - perl Makefile.PL INSTALLDIRS=vendor NO_PERLLOCAL=1 NO_PACKLIST=1
